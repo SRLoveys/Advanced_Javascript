@@ -65,6 +65,13 @@ function filterInvoices() {
         const endDate   = new Date(getElement("#end_date").value);        
 
         // add code that finishes this filter
+        return invoiceDate >= startDate && invoiceDate <= endDate;
+    });
+
+    filtered = filtered.filter(invoice => {
+        const paid = invoice[3];
+
+      
     });
 
     // filter by paid status
