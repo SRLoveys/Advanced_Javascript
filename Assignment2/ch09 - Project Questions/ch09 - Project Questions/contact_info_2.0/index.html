@@ -12,25 +12,32 @@
 		<h1>My Contact Info</h1>
 		<div>
 			<label for="name">Name:</label>
-			<input type="text" name="name" id="name" required autofocus autocomplete="off">
+			<input type="text" name="name" id="name" 
+			title="Please enter your name" required autofocus autocomplete="off">
+			<span>*</span>
 		</div>
 		<div>
 			<label for="email">E-Mail:</label>
-			<input type="email" name="email" id="email" required autocomplete="off">
+			<input type="email" name="email" id="email" 
+			title="Please enter an email (name@domain.com) or phone(nnn-nnn-nnnn format)." autocomplete="off">
+			<span>*</span>
 		</div>
 		<div>
 			<label for="phone">Mobile phone:</label>
 			<input type="tel" name="phone" id="phone" pattern="\d{3}[\-]\d{3}[\-]\d{4}"
-				title="nnn-nnn-nnnn" placeholder="nnn-nnn-nnnn" required>
+				title="nnn-nnn-nnnn" placeholder="nnn-nnn-nnnn">
 		</div>
 		<div>
 			<label for="zip">ZIP Code:</label>
 			<input type="text" name="zip" id="zip" pattern="\d{5}" 
 				title="nnnnn" placeholder="nnnnn" required>
+				<span>*</span>
 		</div>
 		<div>
 			<label for="dob">Date of Birth:</label>
-			<input type="date" name="dob" id="dob" required>
+			<input type="date" name="dob" id="dob" 
+			title="DOB must be in the past." required>
+			<span>*</span>
 		</div>
 		<div>
 			<label></label>
