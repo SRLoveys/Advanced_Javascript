@@ -33,18 +33,6 @@ function displayInvoices(invoices) {
     }
 
     // add one row for each invoice
-}
- 
-function displayInvoices(invoices) {
-    const table = getElement("#invoice_table");
-
-    // clear any existing invoices (but not header row)
-    const rows = document.querySelectorAll("#invoice_table tr");
-    for (let i = 1; i < rows.length; i++) {
-        table.removeChild(rows[i]);
-    }
-
-    // add one row for each invoice
     invoices.forEach( invoice => {
         const row = document.createElement("tr");
         invoice.forEach( item => {
@@ -71,7 +59,13 @@ function filterInvoices() {
     filtered = filtered.filter(invoice => {
         const paid = invoice[3];
 
-      
+        if (getElement("#both").checked) {
+            return true
+        } else if (getElement("#paid").checked) {
+            return paid
+        } else if (getElement("#unpaid").checked) {
+            return !paid
+        }
     });
 
     // filter by paid status
