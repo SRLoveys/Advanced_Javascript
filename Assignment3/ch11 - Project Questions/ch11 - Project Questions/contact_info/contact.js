@@ -3,23 +3,24 @@ const getElement = selector => document.querySelector(selector);
 
 const padNum = num => num.toString().padStart(2, "0");
 
+
 const clearContact = () => {
     sessionStorage.removeItem("contact");
 };
 const saveContact = () => {
-    const contact = {
-        contactName: getElement("#name").value,
-        email: getElement("#email").value,
-        phone: getElement("#phone").value,
-        zip: getElement("#zip").value,
-        dob: new Date(getElement("#dob").value + "T00:00:00")
-    };
-    sessionStorage.contact = JSON.stringify(contact);
+    const contact = [
+        cname = getElement("#name").value,
+        email = getElement("#email").value,
+        phone = getElement("#phone").value,
+        zip = getElement("#zip").value,
+        dob = new Date(getElement("#dob").value + "T00:00:00")
+    ];
+    sessionStorage.setItem(contact);
 };
 const displayContact = () => {
-    const contact = JSON.parse(sessionStorage.contact);
+    const contact = sessionStorage.getItem(contact);
 
-    getElement("#name").value = contact.contactName ?? "";
+    getElement("#name").value = contact.cname ?? "";
     getElement("#email").value = contact.email ?? "";
     getElement("#phone").value = contact.phone ?? "";
     getElement("#zip").value = contact.zip ?? "";
@@ -32,9 +33,9 @@ const displayContact = () => {
     }
 };
 const displayConfirmPage = () => {
-    const contact = JSON.parse(sessionStorage.contact);
+    const contact = sessionStorage.getItem(contact);
 
-    getElement("#lbl_name").textContent = contact.contactName ?? "";
+    getElement("#lbl_name").textContent = contact.cname ?? "";
     getElement("#lbl_email").textContent = contact.email ?? "";
     getElement("#lbl_phone").textContent = contact.phone ?? "";
     getElement("#lbl_zip").textContent = contact.zip ?? "";
