@@ -10,6 +10,7 @@ const clearContact = () => {
 const saveContact = () => {
     const contact = [
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         cname = getElement("#name").value,
         email = getElement("#email").value,
         phone = getElement("#phone").value,
@@ -38,10 +39,27 @@ const displayContact = () => {
     if (!sessionStorage.contact) return;
     const contact = JSON.parse(sessionStorage.contact);
 
+=======
+        getElement("#name").value,
+        getElement("#email").value,
+        getElement("#phone").value,
+        getElement("#zip").value,
+        new Date(getElement("#dob").value + "T00:00:00")
+    ];
+    sessionStorage.contact = JSON.stringify(contact);
+};
+const displayContact = () => {
+    if (!sessionStorage.contact) return;
+    const contact = JSON.parse(sessionStorage.contact);
+
+>>>>>>> Stashed changes
     getElement("#name").value = contact[0] ?? "";
     getElement("#email").value = contact[1] ?? "";
     getElement("#phone").value = contact[2] ?? "";
     getElement("#zip").value = contact[3] ?? "";
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 
@@ -52,6 +70,7 @@ const displayContact = () => {
     }
 };
 const displayConfirmPage = () => {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     const contact = sessionStorage.getItem(contact);
 
@@ -64,11 +83,19 @@ const displayConfirmPage = () => {
     if (!sessionStorage.contact) return;
     const contact = JSON.parse(sessionStorage.contact);
 
+=======
+    if (!sessionStorage.contact) return;
+    const contact = JSON.parse(sessionStorage.contact);
+
+>>>>>>> Stashed changes
     getElement("#lbl_name").textContent = contact[0] ?? "";
     getElement("#lbl_email").textContent = contact[1] ?? "";
     getElement("#lbl_phone").textContent = contact[2] ?? "";
     getElement("#lbl_zip").textContent = contact[3] ?? "";
     getElement("#lbl_dob").textContent = new Date(contact[4]).toDateString() ?? "";
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 };
 
