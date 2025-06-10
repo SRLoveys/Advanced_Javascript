@@ -9,6 +9,7 @@ const clearContact = () => {
 };
 const saveContact = () => {
     const contact = [
+<<<<<<< Updated upstream
         cname = getElement("#name").value,
         email = getElement("#email").value,
         phone = getElement("#phone").value,
@@ -24,15 +25,34 @@ const displayContact = () => {
     getElement("#email").value = contact.email ?? "";
     getElement("#phone").value = contact.phone ?? "";
     getElement("#zip").value = contact.zip ?? "";
+=======
+        getElement("#name").value,
+        getElement("#email").value,
+        getElement("#phone").value,
+        getElement("#zip").value,
+        new Date(getElement("#dob").value + "T00:00:00")
+    ];
+    sessionStorage.contact = JSON.stringify(contact);
+};
+const displayContact = () => {
+    if (!sessionStorage.contact) return;
+    const contact = JSON.parse(sessionStorage.contact);
+
+    getElement("#name").value = contact[0] ?? "";
+    getElement("#email").value = contact[1] ?? "";
+    getElement("#phone").value = contact[2] ?? "";
+    getElement("#zip").value = contact[3] ?? "";
+>>>>>>> Stashed changes
 
 
-    const dt = new Date(sessionStorage.dob);
+    const dt = new Date(contact[4]);
     if(!(dt.toString() == "Invalid Date")) {
         const str = `${dt.getFullYear()}-${padNum(dt.getMonth() + 1)}-${padNum(dt.getDate())}`;
         getElement("#dob").value = str;
     }
 };
 const displayConfirmPage = () => {
+<<<<<<< Updated upstream
     const contact = sessionStorage.getItem(contact);
 
     getElement("#lbl_name").textContent = contact.cname ?? "";
@@ -40,6 +60,16 @@ const displayConfirmPage = () => {
     getElement("#lbl_phone").textContent = contact.phone ?? "";
     getElement("#lbl_zip").textContent = contact.zip ?? "";
     getElement("#lbl_dob").textContent = new Date(contact.dob).toDateString() ?? "";
+=======
+    if (!sessionStorage.contact) return;
+    const contact = JSON.parse(sessionStorage.contact);
+
+    getElement("#lbl_name").textContent = contact[0] ?? "";
+    getElement("#lbl_email").textContent = contact[1] ?? "";
+    getElement("#lbl_phone").textContent = contact[2] ?? "";
+    getElement("#lbl_zip").textContent = contact[3] ?? "";
+    getElement("#lbl_dob").textContent = new Date(contact[4]).toDateString() ?? "";
+>>>>>>> Stashed changes
 };
 
 const clearMessages = () => {

@@ -29,13 +29,13 @@ const displayScores = scores => {
     let output = "";
     filtered.forEach(student => {
         const [firstName, lastName, score] = student;
-        output += `${firstName} ${lastName} ${score}\n`;
+        output += `${lastName}, ${firstName}: ${score}\n`;
         total += score;
     });
 
 
     // calculate the average 
-    const avg = filtered.length > 0 ? (total / filtered.length) : "";
+    const avg = filtered.length > 0 ? (total / filtered.length).toFixed(2) : "";
 
     // display 
     getElement("#score_list").value = output;
