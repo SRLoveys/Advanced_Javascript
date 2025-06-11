@@ -14,7 +14,7 @@ class Event {
     }
 
     get isValidDate() {
-        return this.date.toString != "Invalid Date";
+        return this.date.toString() != "Invalid Date";
     }
 
     get days() {

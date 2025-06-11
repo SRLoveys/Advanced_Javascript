@@ -9,38 +9,46 @@ const clearForm = () => {
     document.querySelector("#cents").focus();
 };
 
-const calculateChange = () => {
-    // get the number of cents from the user
-    let cents = Math.floor(parseInt(document.querySelector("#cents").value));
+const calculateChange = {
+    quarters: 0,
+    dimes: 0,
+    nickels: 0,
+    pennies: 0,
 
-    if (isNaN(cents) || cents < 0 || cents > 99) {
-        alert("Please enter a valid number between 0 and 99");
-        document.querySelector("#cents").select();
-    } else {
-        // calculate the number of quarters
-        const quarters = Math.floor(cents / 25);        // get number of quarters
-        cents = cents % 25;         // assign the remainder to the cents variable
+    isValidCents: function(cents) {
+        return !isNaN(cents) && cents >= 0 && cents <= 99;
+    },
 
-        // calculate the number of dimes
-        const dimes = Math.floor(cents / 10);           // get number of dimes
-        cents = cents % 10;         // assign the remainder to the cents variable
+    calculateChange: function(cents) {
+        if (!this.isValidCents(cents)) {
+            alert("Please enter a valid number between 0 and 99");
+            document.querySelector("#cents").select();
+            return;
+        }
 
-        // calculate the number of nickels
-        const nickels = Math.floor(cents / 5);
+        this.quarters = Math.floor(cents / 25);
+        cents %= 25;
 
-        // calculate the number of nickels and pennies
-        const pennies = cents % 5;
+        this.dimes = Math.floor(cents / 10);
+        cents %= 10;
 
-        // display the results of the calculations
-        document.querySelector("#quarters").value = quarters;
-        document.querySelector("#dimes").value = dimes;
-        document.querySelector("#nickels").value = nickels;
-        document.querySelector("#pennies").value = pennies;
+        this.nickels = Math.floor(cents / 5);
+        cents %= 5;
+
+        this.pennies = cents;
+
+        document.querySelector("#quarters").value = this.quarters;
+        document.querySelector("#dimes").value = this.dimes;
+        document.querySelector("#nickels").value = this.nickels;
+        document.querySelector("#pennies").value = this.pennies;
     }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector("#calculate").addEventListener("click", calculateChange);  
+    document.querySelector("#calculate").addEventListener("click", () => {
+        const cents = parseInt(document.querySelector("#cents").value);
+        calculateChange.calculateChange(cents);
+    });  
     document.querySelector("#clear").addEventListener("click", clearForm);     
     document.querySelector("#cents").focus();     
 });
